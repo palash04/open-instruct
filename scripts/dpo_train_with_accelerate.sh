@@ -14,10 +14,10 @@ accelerate launch \
     --use_deepspeed \
     --deepspeed_config_file ds_configs/stage3_no_offloading_accelerate.conf \
     open_instruct/dpo_tune.py \
-    --model_name_or_path allenai/tulu-2-7b \
+    --model_name_or_path /tmp/sft_model/ \
     --use_flash_attn \
     --gradient_checkpointing \
-    --tokenizer_name allenai/tulu-2-7b \
+    --tokenizer_name /tmp/sft_model/ \
     --use_slow_tokenizer \
     --dataset_name HuggingFaceH4/ultrafeedback_binarized \
     --max_seq_length 2048 \
