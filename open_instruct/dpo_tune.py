@@ -433,7 +433,7 @@ def main():
     if args.config_name:
         config = AutoConfig.from_pretrained(args.config_name)
     elif args.model_name_or_path:
-        config = AutoConfig.from_pretrained(args.model_name_or_path)
+        config = AutoConfig.from_pretrained(args.model_name_or_path, trust_remote_code=True)
     else:
         raise ValueError(
             "You are instantiating a new config instance from scratch. This is not supported by this script."
@@ -468,6 +468,7 @@ def main():
                     device_map=device_map,
                     torch_dtype=torch.bfloat16,
                     use_flash_attention_2=True if args.use_flash_attn else False,
+                    trust_remote_code=True,
                 )
             else:
                 model = AutoModelForCausalLM.from_pretrained(
@@ -476,6 +477,7 @@ def main():
                     config=config,
                     low_cpu_mem_usage=args.low_cpu_mem_usage,
                     use_flash_attention_2=True if args.use_flash_attn else False,
+                    trust_remote_code=True,
                 )
         else:
             logger.info("Training new model from scratch")
