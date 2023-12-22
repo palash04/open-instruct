@@ -15,7 +15,6 @@ accelerate launch \
     --deepspeed_config_file ds_configs/stage3_no_offloading_accelerate.conf \
     open_instruct/dpo_tune.py \
     --model_name_or_path /tmp/sft_model/ \
-    --use_flash_attn \
     --gradient_checkpointing \
     --tokenizer_name /tmp/sft_model/ \
     --use_slow_tokenizer \
